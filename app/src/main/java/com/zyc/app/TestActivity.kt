@@ -7,6 +7,8 @@ import com.zyc.za.CoreActivity
 @CreateDate 2021/2/8
 @Description 描述
  */
-class TestActivity : CoreActivity() {
-
+public class TestActivity : CoreActivity() {
+    override fun layoutId(): Int {
+        return 0;
+    }
 }

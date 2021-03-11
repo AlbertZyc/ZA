@@ -16,7 +16,6 @@ class MainActivity : CoreActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
     }
 
     override fun layoutId() = R.layout.activity_main;
