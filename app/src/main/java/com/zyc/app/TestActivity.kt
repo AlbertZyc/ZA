@@ -1,6 +1,7 @@
 package com.zyc.app
 
 import com.zyc.za.CoreActivity
+import com.zyc.za.R
 
 /**
 @Author AlbertZ
@@ -9,6 +10,6 @@ import com.zyc.za.CoreActivity
  */
 public class TestActivity : CoreActivity() {
     override fun layoutId(): Int {
-        return 0;
+        return R.layout.activity_test;
     }
 }
