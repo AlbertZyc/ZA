@@ -1,14 +1,18 @@
 package com.zyc.za
 
+import android.app.Activity
 import android.app.Application
+import android.os.Bundle
+import com.zyc.za.utils.ZLog
 
 /**
 @Author AlbertZ
 @CreateDate 2021/2/3
 @Description 描述
  */
-open class CoreApplication : Application() {
+open class CoreApplication : Application(), Application.ActivityLifecycleCallbacks {
     private val TAG = "CoreApplication"
+    private var mActivityCount = 0
 
     companion object {
         val instance: CoreApplication by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
@@ -16,9 +20,24 @@ open class CoreApplication : Application() {
         }
     }
 
+    override fun onCreate() {
+        super.onCreate()
+        registerActivityLifecycleCallbacks(this)
+    }
+
     private val activityTask: MutableList<CoreActivity> = mutableListOf()
 
-    init {
+    /**
+     * 应用进入后台
+     */
+    fun onEnterBackground() {
+
+    }
+
+    /**
+     * 应用进入前台
+     */
+    fun onEnterForeGround() {
 
     }
 
@@ -35,6 +54,43 @@ open class CoreApplication : Application() {
     fun removeAllActivities() {
         activityTask.clear()
         ZLog.i(TAG, "Remove All Activity in ActivityTask")
+    }
+
+    fun getActivitiesCount() = activityTask.size
+
+    /**
+     * Activity生命周期
+     */
+
+    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+    }
+
+    override fun onActivityStarted(activity: Activity) {
+        mActivityCount++
+        if (mActivityCount > 0) {
+            onEnterForeGround()
+        }
+    }
+
+    override fun onActivityResumed(activity: Activity) {
+
+    }
+
+    override fun onActivityPaused(activity: Activity) {
+
+    }
+
+    override fun onActivityStopped(activity: Activity) {
+        mActivityCount--
+        if (mActivityCount == 0) {
+            onEnterBackground()
+        }
+    }
+
+    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+    }
+
+    override fun onActivityDestroyed(activity: Activity) {
     }
 
 }

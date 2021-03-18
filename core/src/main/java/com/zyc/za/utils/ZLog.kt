@@ -1,6 +1,8 @@
-package com.zyc.za
+package com.zyc.za.utils
 
 import android.util.Log
+import com.zyc.za.BuildConfig
+import com.zyc.za.CoreConstant
 
 
 /**
