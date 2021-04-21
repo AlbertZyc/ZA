@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.TextView
 import com.zyc.za.CoreActivity
 import com.zyc.za.R
+import com.zyc.za.queue.LogTask
+import com.zyc.za.queue.TaskPriority
 
 /**
 @Author AlbertZ
@@ -13,11 +15,12 @@ import com.zyc.za.R
 @Description 描述
  */
 public class TestActivity : CoreActivity() {
-    override fun layoutId(): Int {
-        return R.layout.activity_test
-    }
-
+    var num = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        findViewById<TextView>(R.id.text).setOnClickListener {
+            num++
+            val logTask = LogTask("abhc$num").enqueue()
+        }
     }
 }

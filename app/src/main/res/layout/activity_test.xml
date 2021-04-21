@@ -8,8 +8,11 @@
 
     <TextView
         android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,42 +71,42 @@
     <!--        app:layout_constraintCircle="@id/btn_001"-->
     <!--        app:layout_constraintCircleAngle="280"-->
     <!--        app:layout_constraintCircleRadius="110dp" />-->
-<!--    <TextView-->
-<!--        android:id="@+id/btn_002"-->
-<!--        style="@style/tvBaseStyle"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/bg_color_02"-->
-<!--        android:text="Hello002"-->
-<!--        app:layout_constraintEnd_toStartOf="@id/btn_003"-->
-<!--        app:layout_constraintHorizontal_bias="0.3"-->
-<!--        app:layout_constraintHorizontal_chainStyle="spread"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/btn_001" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/btn_002"-->
+    <!--        style="@style/tvBaseStyle"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@drawable/bg_color_02"-->
+    <!--        android:text="Hello002"-->
+    <!--        app:layout_constraintEnd_toStartOf="@id/btn_003"-->
+    <!--        app:layout_constraintHorizontal_bias="0.3"-->
+    <!--        app:layout_constraintHorizontal_chainStyle="spread"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/btn_001" />-->
 
 
-<!--    <TextView-->
-<!--        android:id="@+id/btn_003"-->
-<!--        style="@style/tvBaseStyle"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="100dp"-->
-<!--        android:background="@drawable/bg_color_03"-->
-<!--        android:text="Hello003"-->
-<!--        app:layout_constraintEnd_toStartOf="@id/btn_004"-->
-<!--        app:layout_constraintStart_toEndOf="@id/btn_002"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/btn_001" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/btn_003"-->
+    <!--        style="@style/tvBaseStyle"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="100dp"-->
+    <!--        android:background="@drawable/bg_color_03"-->
+    <!--        android:text="Hello003"-->
+    <!--        app:layout_constraintEnd_toStartOf="@id/btn_004"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/btn_002"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/btn_001" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/btn_004"-->
-<!--        style="@style/tvBaseStyle"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/bg_color_04"-->
-<!--        android:text="Hello004"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toEndOf="@id/btn_003"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/btn_001" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/btn_004"-->
+    <!--        style="@style/tvBaseStyle"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@drawable/bg_color_04"-->
+    <!--        android:text="Hello004"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/btn_003"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/btn_001" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

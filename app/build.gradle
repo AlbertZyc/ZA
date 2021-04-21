@@ -13,7 +13,6 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
-
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -34,4 +33,9 @@ android {
 
 dependencies {
   implementation  project(':core')
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+//    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+//    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+//    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 }
