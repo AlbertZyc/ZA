@@ -25,7 +25,7 @@ open class CoreApplication : Application(), Application.ActivityLifecycleCallbac
         registerActivityLifecycleCallbacks(this)
     }
 
-    private val activityTask: MutableList<CoreActivity> = mutableListOf()
+    private val activityTask: MutableList<CoreActivity<*,*>> = mutableListOf()
 
     /**
      * 应用进入后台
@@ -41,12 +41,12 @@ open class CoreApplication : Application(), Application.ActivityLifecycleCallbac
 
     }
 
-    fun <T : CoreActivity> putActivity(activity: T) {
+    fun <T : CoreActivity<*,*>> putActivity(activity: T) {
         activityTask.add(activity)
         ZLog.i(TAG, "Put Activity is ${activity::class.simpleName} in ActivityTask")
     }
 
-    fun <T : CoreActivity> removeActivity(activity: T) {
+    fun <T : CoreActivity<*,*>> removeActivity(activity: T) {
         activityTask.remove(activity)
         ZLog.i(TAG, "Remove Activity is ${activity::class.simpleName} in ActivityTask")
     }

@@ -39,6 +39,9 @@ android {
         // for view binding :
         // viewBinding = true
     }
+    kapt {
+        generateStubs = true
+    }
 }
 
 dependencies {
@@ -49,7 +52,7 @@ dependencies {
     api rootProject.ext.dependencies["livedata-ktl"]
     api rootProject.ext.dependencies["viewmodel-ktl"]
     api rootProject.ext.dependencies["arouter-api"]
-    api rootProject.ext.dependencies["arouter-compiler"]
+    kapt rootProject.ext.dependencies["arouter-compiler"]
     api rootProject.ext.dependencies["recyclerview"]
     api rootProject.ext.dependencies["adapter-helper"]
     api rootProject.ext.dependencies["smartrefresh-layout-core"]

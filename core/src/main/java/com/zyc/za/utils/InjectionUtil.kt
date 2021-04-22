@@ -4,10 +4,6 @@ import android.app.Application
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.view.marginBottom
-import androidx.core.view.marginEnd
-import androidx.core.view.marginStart
-import androidx.core.view.marginTop
 import com.zyc.za.CoreApplication
 import java.lang.Exception
 
@@ -83,20 +79,4 @@ open class InjectionUtil {
         }
     }
 
-    fun View.setMarginStart(start: Int) {
-        this.setMargin(start, marginTop, marginEnd, marginBottom)
-    }
-
-    fun View.setMarginTop(top: Int) {
-        this.setMargin(marginStart, top, marginEnd, marginBottom)
-    }
-
-
-    fun View.setMarginEnd(end: Int) {
-        this.setMargin(marginStart, marginTop, end, marginBottom)
-    }
-
-    fun View.setMarginBottom(bottom: Int) {
-        this.setMargin(marginStart, marginTop, marginEnd, bottom)
-    }
 }

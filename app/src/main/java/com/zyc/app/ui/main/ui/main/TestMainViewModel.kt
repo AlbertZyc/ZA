@@ -1,7 +1,8 @@
 package com.zyc.app.ui.main.ui.main
 
-import androidx.lifecycle.ViewModel
+import com.zyc.test.TestBean
+import com.zyc.za.viewmodel.CoreViewModel
 
-class TestMainViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class TestMainViewModel : CoreViewModel() {
+    var testB:TestBean ?= null
 }
