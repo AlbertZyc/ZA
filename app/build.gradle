@@ -15,6 +15,7 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
         consumerProguardFiles "consumer-rules.pro"
+
     }
 
     buildTypes {
@@ -33,16 +34,9 @@ android {
     buildFeatures {
         dataBinding = true
     }
-    kapt {
-        generateStubs = true
-    }
 }
 
 dependencies {
-  implementation  project(':core')
-//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-//    implementation 'androidx.appcompat:appcompat:1.2.0'
-//    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-//    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
-//    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation project(':core')
+    implementation rootProject.ext.dependencies["appcompat"]
 }

@@ -51,6 +51,10 @@ open class ZLog {
         fun i(head: String, msg: String) {
             Log.i("${CoreConstant.ZYC}-$head", msg)
         }
+
+        fun i(any: Any, msg: String) {
+            Log.i("${CoreConstant.ZYC}-${any.javaClass}", msg)
+        }
 //        fun i(msg: String) {
 //            print(CoreConstant.ZYC + msg)
 //        }

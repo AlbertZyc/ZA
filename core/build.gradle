@@ -17,6 +17,7 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
+        buildConfigField "boolean", "ZDEBUG", "$DEBUG"
     }
 
     buildTypes {
@@ -36,15 +37,13 @@ android {
     }
     buildFeatures {
         dataBinding = true
-        // for view binding :
-        // viewBinding = true
     }
-    kapt {
-        generateStubs = true
-    }
+
 }
 
 dependencies {
+    //noinspection GradleDependency
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${rootProject.ext.androidxVersion["ktxCoreVersion"]}"
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["material"]
     api rootProject.ext.dependencies["kotlin-stdlib"]

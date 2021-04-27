@@ -1,4 +1,4 @@
-package com.zyc.za
+package com.zyc.za.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
+import com.zyc.za.CoreApplication
 import com.zyc.za.viewmodel.CoreViewModel
 
 /**
@@ -24,6 +25,7 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onInitContentView()
+        onInitViewModel()
         CoreApplication.instance.putActivity(this)
     }
 
@@ -53,8 +55,7 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
 
     fun onInitViewModel() {
         val vm = initViewModel()
-        viewModel =
-            ViewModelProvider(this, CoreViewModel.createViewModelFactory(vm)).get(vm::class.java)
+        viewModel = ViewModelProvider(this, CoreViewModel.createViewModelFactory(vm)).get(vm::class.java)
         lifecycle.addObserver(viewModel)
     }
 
@@ -76,6 +77,10 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
 
     override fun onResume() {
         super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
     }
 
     override fun onDestroy() {

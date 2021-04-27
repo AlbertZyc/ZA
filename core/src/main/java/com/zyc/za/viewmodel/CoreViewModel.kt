@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 @Description 阿弥陀佛 顾名思义？
  */
 abstract class CoreViewModel : ViewModel(), ViewModelLifecycle {
-    private lateinit var lifecycle: LifecycleOwner
+    private lateinit var lifecycleOwner: LifecycleOwner
 
     /**
      * 也许你需要一个方法来创建一个ViewModel
@@ -24,31 +24,25 @@ abstract class CoreViewModel : ViewModel(), ViewModelLifecycle {
     }
 
     override fun onAny(owner: LifecycleOwner, event: Lifecycle.Event) {
-        this.lifecycle = owner
+        this.lifecycleOwner = owner
     }
 
     override fun onStart() {
-        TODO("Not yet implemented")
     }
 
     override fun onResume() {
-        TODO("Not yet implemented")
     }
 
     override fun onPause() {
-        TODO("Not yet implemented")
     }
 
     override fun onStop() {
-        TODO("Not yet implemented")
     }
 
     override fun onCreate() {
-        TODO("Not yet implemented")
     }
 
     override fun onDestroy() {
-        TODO("Not yet implemented")
     }
 
 }
