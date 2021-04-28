@@ -8,6 +8,8 @@ import com.zyc.router.RouteConstants
 import com.zyc.za.activity.CoreActivity
 import com.zyc.za.R
 import com.zyc.za.databinding.TestMainActivityBinding
+import com.zyc.za.utils.ZLog
+
 @Route(path = RouteConstants.TEST_MAIN)
 class TestMainActivity : CoreActivity<TestMainActivityBinding, TestMainViewModel>() {
 
@@ -15,13 +17,20 @@ class TestMainActivity : CoreActivity<TestMainActivityBinding, TestMainViewModel
     override fun initViewModel(): TestMainViewModel = TestMainViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding.viewModel = viewModel
+        addObserver()
+    }
 
+    private fun addObserver() {
+        viewModel.testBLiveData.observe(this, {
+            binding.tvCenter.text = it.age.toString()
+        })
     }
 
     override fun addViewAction() {
         super.addViewAction()
         binding.tvCenter.singleClick {
-
+            viewModel.postData()
         }
     }
 }

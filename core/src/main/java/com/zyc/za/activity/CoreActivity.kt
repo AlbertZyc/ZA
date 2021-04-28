@@ -26,6 +26,7 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
         super.onCreate(savedInstanceState)
         onInitContentView()
         onInitViewModel()
+        addViewAction()
         CoreApplication.instance.putActivity(this)
     }
 

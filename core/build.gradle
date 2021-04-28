@@ -32,18 +32,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
     buildFeatures {
         dataBinding = true
     }
+
 
 }
 
 dependencies {
     //noinspection GradleDependency
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${rootProject.ext.androidxVersion["ktxCoreVersion"]}"
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["material"]
     api rootProject.ext.dependencies["kotlin-stdlib"]

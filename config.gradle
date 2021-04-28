@@ -38,6 +38,7 @@ ext {
             "material"                  : "com.google.android.material:material:${androidxVersion["materialVersion"]}",
             "ktx-core"                  : "androidx.core:core-ktx:${androidxVersion["ktxCoreVersion"]}",
             "kotlin-stdlib"             : "org.jetbrains.kotlin:kotlin-stdlib:${androidxVersion["ktxVersion"]}",
+//            "kotlinStdlib"             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${androidxVersion[ "ktxCoreVersion"]}",
             "appcompat"                 : "androidx.appcompat:appcompat:${androidxVersion["appcompatVersion"]}",
             "constraint-layout"         : "androidx.constraintlayout:constraintlayout:${androidxVersion["constraintlayoutVersion"]}",
             "livedata-ktl"              : "androidx.lifecycle:lifecycle-livedata-ktx:${androidxVersion["livedataVersion"]}",
