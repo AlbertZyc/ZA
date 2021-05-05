@@ -1,11 +1,9 @@
-package com.zyc.za.utils
+package com.zyc.extensions
 
-import android.app.Application
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.zyc.za.CoreApplication
-import java.lang.Exception
 
 /**
  *@Author AlbertZ
