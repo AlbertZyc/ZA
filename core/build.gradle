@@ -56,5 +56,7 @@ dependencies {
     //retrofit
     implementation rootProject.ext.dependencies["retrofit"]
     implementation rootProject.ext.dependencies["converter-gson"]
+    api rootProject.ext.dependencies["kotlin-coroutines"]
+    api rootProject.ext.dependencies["kotlin-coroutines-android"]
     // Test Tip
 }
