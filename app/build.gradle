@@ -39,4 +39,6 @@ android {
 dependencies {
     implementation project(':core')
     implementation rootProject.ext.dependencies["appcompat"]
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 }

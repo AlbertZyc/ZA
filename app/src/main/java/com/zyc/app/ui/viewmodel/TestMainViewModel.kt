@@ -1,4 +1,4 @@
-package com.zyc.app.ui.main.ui
+package com.zyc.app.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.zyc.test.TestBean

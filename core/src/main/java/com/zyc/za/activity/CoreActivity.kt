@@ -25,7 +25,9 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onInitContentView()
+        onInitDataBind()
         onInitViewModel()
+        onInitObserver()
         addViewAction()
         CoreApplication.instance.putActivity(this)
     }
@@ -40,7 +42,6 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
 
     protected open fun onInitContentView() {
         setContentView(layoutId())
-        onInitDataBind()
     }
 
 
@@ -54,11 +55,17 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
         binding.lifecycleOwner = this
     }
 
-    fun onInitViewModel() {
+    protected fun onInitViewModel() {
         val vm = initViewModel()
-        viewModel = ViewModelProvider(this, CoreViewModel.createViewModelFactory(vm)).get(vm::class.java)
+        viewModel =
+            ViewModelProvider(this, CoreViewModel.createViewModelFactory(vm)).get(vm::class.java)
         lifecycle.addObserver(viewModel)
     }
+
+    protected open fun onInitObserver() {
+
+    }
+
 
     override fun onStart() {
         super.onStart()
