@@ -56,5 +56,5 @@ dependencies {
     //retrofit
     implementation rootProject.ext.dependencies["retrofit"]
     implementation rootProject.ext.dependencies["converter-gson"]
-    implementation rootProject.ext.dependencies["gson"]
+    // Test Tip
 }
