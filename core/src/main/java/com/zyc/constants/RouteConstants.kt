@@ -6,5 +6,5 @@ package com.zyc.router
 @Description 描述
  */
 object RouteConstants {
-    const val TEST_MAIN:String ="/app"
+    const val TEST_MAIN: String = "/app/ui/main"
 }
