@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/m_recharge"
+        android:checked="true"
+        android:iconTintMode="screen"
+        android:icon="@mipmap/icon_recharge"
+        android:title="充能"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/m_ideal"
+        android:checked="false"
+        android:iconTintMode="screen"
+        android:icon="@mipmap/icon_ideal"
+        android:title="充能"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/m_setting"
+        android:iconTintMode="screen"
+        android:checked="false"
+        android:icon="@mipmap/icon_setting"
+        android:title="充能"
+        app:showAsAction="ifRoom" />
+</menu>
