@@ -14,6 +14,7 @@ import com.zyc.za.viewmodel.CoreViewModel
  * @Author AlbertZ
  * @CreateDate 2021/3/18
  * @Description 阿弥陀佛，正常人都知道这是干嘛
+ * TODO 先不考虑没有ViewModel或者ViewDataBinding的情况 默认都有
  */
 
 abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompatActivity() {

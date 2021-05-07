@@ -9,9 +9,9 @@ import com.zyc.za.activity.CoreActivity
 import com.zyc.za.utils.ZLog
 
 /**
-@Author AlbertZ
-@CreateDate 2021/2/3
-@Description Nobody needn't a Application
+ * @Author AlbertZ
+ * @CreateDate 2021/2/3
+ * @Description Nobody needn't a Application
  */
 open class CoreApplication : Application(), Application.ActivityLifecycleCallbacks {
     private val TAG = "CoreApplication"

@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 /**
-@Author AlbertZ
-@CreateDate 2021/4/22
-@Description 阿弥陀佛 顾名思义？
+ * @Author AlbertZ
+ * @CreateDate 2021/4/22
+ * @Description 阿弥陀佛 顾名思义？
  */
 abstract class CoreViewModel : ViewModel(), ViewModelLifecycle {
     private lateinit var lifecycleOwner: LifecycleOwner
