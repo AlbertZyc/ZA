@@ -8,12 +8,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.zyc.za.CoreApplication
+import com.zyc.za.lifecycle.ActivityController
 import com.zyc.za.viewmodel.CoreViewModel
 
 /**
  * @Author AlbertZ
  * @CreateDate 2021/3/18
  * @Description 阿弥陀佛，正常人都知道这是干嘛
+ * TODO 先不考虑没有ViewModel或者ViewDataBinding的情况 默认都有
  */
 
 abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompatActivity() {
@@ -25,8 +27,11 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onInitContentView()
+        onInitDataBind()
         onInitViewModel()
-        CoreApplication.instance.putActivity(this)
+        onInitObserver()
+        addViewAction()
+        ActivityController.pushActivity(this)
     }
 
     /**
@@ -39,7 +44,6 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
 
     protected open fun onInitContentView() {
         setContentView(layoutId())
-        onInitDataBind()
     }
 
 
@@ -53,11 +57,17 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
         binding.lifecycleOwner = this
     }
 
-    fun onInitViewModel() {
+    protected fun onInitViewModel() {
         val vm = initViewModel()
-        viewModel = ViewModelProvider(this, CoreViewModel.createViewModelFactory(vm)).get(vm::class.java)
+        viewModel =
+            ViewModelProvider(this, CoreViewModel.createViewModelFactory(vm)).get(vm::class.java)
         lifecycle.addObserver(viewModel)
     }
+
+    protected open fun onInitObserver() {
+
+    }
+
 
     override fun onStart() {
         super.onStart()
@@ -86,7 +96,7 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
     override fun onDestroy() {
         binding.unbind()
         lifecycle.removeObserver(viewModel)
-        CoreApplication.instance.removeActivity(this)
+        ActivityController.popActivity(this)
         super.onDestroy()
     }
 

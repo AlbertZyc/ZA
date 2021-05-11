@@ -1,6 +1,7 @@
 package com.zyc.za
 
 import android.app.Activity
+import android.app.ActivityManager
 import android.app.Application
 import android.os.Bundle
 import com.alibaba.android.arouter.launcher.ARouter
@@ -9,9 +10,9 @@ import com.zyc.za.activity.CoreActivity
 import com.zyc.za.utils.ZLog
 
 /**
-@Author AlbertZ
-@CreateDate 2021/2/3
-@Description Nobody needn't a Application
+ * @Author AlbertZ
+ * @CreateDate 2021/2/3
+ * @Description Nobody needn't a Application
  */
 open class CoreApplication : Application(), Application.ActivityLifecycleCallbacks {
     private val TAG = "CoreApplication"
@@ -33,7 +34,6 @@ open class CoreApplication : Application(), Application.ActivityLifecycleCallbac
         registerActivityLifecycleCallbacks(this)
     }
 
-    private val activityTask: MutableList<CoreActivity<*, *>> = mutableListOf()
 
     /**
      * 应用进入后台
@@ -51,26 +51,7 @@ open class CoreApplication : Application(), Application.ActivityLifecycleCallbac
 
     }
 
-    fun <T : CoreActivity<*, *>> putActivity(activity: T) {
-        activityTask.add(activity)
-        ZLog.i(TAG, "Put Activity is ${activity::class.simpleName} in ActivityTask")
-    }
 
-    fun <T : CoreActivity<*, *>> removeActivity(activity: T) {
-        activityTask.remove(activity)
-        ZLog.i(TAG, "Remove Activity is ${activity::class.simpleName} in ActivityTask")
-    }
-
-    fun removeAllActivities() {
-        activityTask.clear()
-        ZLog.i(TAG, "Remove All Activity in ActivityTask")
-    }
-
-    fun getActivitiesCount() = activityTask.size
-
-    /**
-     * Activity生命周期
-     */
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
     }

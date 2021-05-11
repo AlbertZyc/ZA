@@ -13,15 +13,22 @@ ext {
             bintrayVersion    : "0.9.1"
     ]
     androidxVersion = [
-            ktxCoreVersion         : "1.4.32",
             ktxVersion             : "1.4.32",
-            appcompatVersion       : "1.3.0-alpha02",
-            materialVersion        : "1.2.1",
+            ktxCoroutines          : "1.4.3",
+            appcompatVersion       : "1.3.0-rc01",
+            materialVersion        : "1.3.0",
             constraintlayoutVersion: "2.0.4",
             livedataVersion        : "2.3.1",
             viewmodelVersion       : "2.3.1",
-            recyclerviewVersion    : "1.2.0-alpha02"
+            recyclerviewVersion    : "1.2.0"
     ]
+    /**
+     *   // 协程核心库
+     *     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3"
+     *     // 协程Android支持库
+     *     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
+     *
+     */
     version = [
             //阿里多module解决方案
             arouterApiVersion                   : "1.2.2",
@@ -36,17 +43,19 @@ ext {
     ]
     dependencies = [
             "material"                  : "com.google.android.material:material:${androidxVersion["materialVersion"]}",
-            "ktx-core"                  : "androidx.core:core-ktx:${androidxVersion["ktxCoreVersion"]}",
             "kotlin-stdlib"             : "org.jetbrains.kotlin:kotlin-stdlib:${androidxVersion["ktxVersion"]}",
+            "kotlin-coroutines-android" : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${androidxVersion["ktxCoroutines"]}",
+            "kotlin-coroutines"         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${androidxVersion["ktxCoroutines"]}",
+//            "kotlinStdlib"             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${androidxVersion[ "ktxCoreVersion"]}",
             "appcompat"                 : "androidx.appcompat:appcompat:${androidxVersion["appcompatVersion"]}",
             "constraint-layout"         : "androidx.constraintlayout:constraintlayout:${androidxVersion["constraintlayoutVersion"]}",
             "livedata-ktl"              : "androidx.lifecycle:lifecycle-livedata-ktx:${androidxVersion["livedataVersion"]}",
             "viewmodel-ktl"             : "androidx.lifecycle:lifecycle-viewmodel-ktx:${androidxVersion["viewmodelVersion"]}",
+            "recyclerview"              : "androidx.recyclerview:recyclerview:${androidxVersion["recyclerviewVersion"]}",
 
 
             "arouter-api"               : "com.alibaba:arouter-api:${version["arouterApiVersion"]}",
             "arouter-compiler"          : "com.alibaba:arouter-compiler:${version["arouterCompilerVersion"]}",
-            "recyclerview"              : "androidx.recyclerview:recyclerview:${version["recyclerviewVersion"]}",
             "adapter-helper"            : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${version["baseRecyclerViewAdapterHelperVersion"]}",
             "smartrefresh-layout-core"  : "com.scwang.smart:refresh-layout-kernel:${version["smartRefreshLayoutVersion"]}",
             "smartrefresh-layout-header": "com.scwang.smart:refresh-header-classics:${version["smartRefreshLayoutVersion"]}",

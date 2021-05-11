@@ -1,11 +1,12 @@
 package com.zyc.extensions
 
 import android.view.View
+import kotlin.contracts.contract
 
 /**
-@Author AlbertZ
-@CreateDate 2021/4/27
-@Description 带有限制快速点击的点击事件
+ * @Author AlbertZ
+ * @CreateDate 2021/4/27
+ * @Description
  */
 
 fun <T : View> T.click(action: (T) -> Unit) {
@@ -14,6 +15,9 @@ fun <T : View> T.click(action: (T) -> Unit) {
     }
 }
 
+/**
+ * 带有限制快速点击的点击事件
+ */
 fun <T : View> T.singleClick(interval: Long = 400L, action: ((T) -> Unit)?) {
     setOnClickListener(SingleClickListener(interval, action))
 }
@@ -35,4 +39,15 @@ class SingleClickListener<T : View>(
             lastClickTime = nowTime
         }
     }
+}
+
+/**
+ * View判空
+ */
+fun View?.isNull(): Boolean {
+    return this == null
+}
+
+fun View?.isNotNull(): Boolean {
+    return this != null
 }

@@ -6,9 +6,9 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.OnLifecycleEvent
 
 /**
-@Author AlbertZ
-@CreateDate 2021/4/22
-@Description 阿弥陀佛 顾名思义？
+ * @Author AlbertZ
+ * @CreateDate 2021/4/22
+ * @Description 阿弥陀佛,顾名思义  ViewModel生命周期
  */
 interface ViewModelLifecycle : LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_ANY)

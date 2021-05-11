@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/m_recharge"
+        android:icon="@drawable/main_bottom_bar_recharge"
+        android:title="充能" />
+    <item
+        android:id="@+id/m_ideal"
+        android:icon="@drawable/main_bottom_bar_ideal"
+        android:title="闪光" />
+    <item
+        android:id="@+id/m_setting"
+        android:icon="@drawable/main_bottom_bar_setting"
+        android:title="构建" />
+</menu>
