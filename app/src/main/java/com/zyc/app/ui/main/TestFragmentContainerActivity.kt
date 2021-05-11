@@ -12,8 +12,11 @@ class TestFragmentContainerActivity :
     CoreFragmentContainerActivity<ActivityTestFragmentContainerBinding, TestFragmentContainerViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test_fragment_container)
+        binding.bnvBottom.apply {
+            itemIconTintList = null
+        }
     }
+
 
     override fun layoutId() = R.layout.activity_test_fragment_container
 

@@ -2,9 +2,6 @@
 
 buildscript {
     apply from: "config.gradle"
-    ext {
-        kotlin_version = '1.4.32'
-    }
     repositories {
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/public' }
@@ -26,7 +23,6 @@ allprojects {
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
         maven { url "https://jitpack.io" }
         google()
-        jcenter()
     }
 }
 

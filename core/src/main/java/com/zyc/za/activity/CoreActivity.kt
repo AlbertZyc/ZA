@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.zyc.za.CoreApplication
+import com.zyc.za.lifecycle.ActivityController
 import com.zyc.za.viewmodel.CoreViewModel
 
 /**
@@ -30,7 +31,7 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
         onInitViewModel()
         onInitObserver()
         addViewAction()
-        CoreApplication.instance.putActivity(this)
+        ActivityController.pushActivity(this)
     }
 
     /**
@@ -95,7 +96,7 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
     override fun onDestroy() {
         binding.unbind()
         lifecycle.removeObserver(viewModel)
-        CoreApplication.instance.removeActivity(this)
+        ActivityController.popActivity(this)
         super.onDestroy()
     }
 
