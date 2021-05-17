@@ -6,14 +6,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.zyc.extensions.isNotNull
-import com.zyc.extensions.isNull
+import com.zyc.livebus.observeNonNull
+import com.zyc.za.CoreConstants
 import com.zyc.za.viewmodel.CoreViewModel
+import com.zyc.za.viewmodel.ViewBehavior
 
 /**
  * @Author AlbertZ
@@ -21,7 +24,8 @@ import com.zyc.za.viewmodel.CoreViewModel
  * @Description fragment封装
  * TODO 先不考虑没有ViewModel或者ViewDataBinding的情况 默认都有
  */
-abstract class CoreFragment<B : ViewDataBinding, VM : CoreViewModel> : Fragment() {
+abstract class CoreFragment<B : ViewDataBinding, VM : CoreViewModel> : Fragment(),
+    ViewBehavior {
 
     protected lateinit var binding: B
         private set
@@ -51,13 +55,19 @@ abstract class CoreFragment<B : ViewDataBinding, VM : CoreViewModel> : Fragment(
         rootView = inflater.inflate(layoutId(), container, false)
         onInitDataBind(inflater, container)
         onInitViewModel()
+        onInitUIBehavior()
         onInitObserver()
         return rootView
     }
 
-
+    /**
+     * ViewModel传入
+     */
     protected abstract fun initViewModel(): VM
 
+    /**
+     * 初始化 ViewModel
+     */
     protected fun onInitViewModel() {
         val vm = initViewModel()
         viewModel = ViewModelProvider(this, CoreViewModel.createViewModelFactory(vm))
@@ -65,12 +75,23 @@ abstract class CoreFragment<B : ViewDataBinding, VM : CoreViewModel> : Fragment(
         lifecycle.addObserver(viewModel)
     }
 
+    private fun onInitUIBehavior() {
+        viewModel.eventToast.observeNonNull(this) {
+            showToast(it)
+        }
+    }
 
+    /**
+     * DataBind初始化
+     */
     protected fun onInitDataBind(inflater: LayoutInflater, container: ViewGroup?) {
         binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
         binding.lifecycleOwner = this
     }
 
+    /**
+     * 更新事件订阅
+     */
     protected open fun onInitObserver() {
 
     }
@@ -126,6 +147,40 @@ abstract class CoreFragment<B : ViewDataBinding, VM : CoreViewModel> : Fragment(
      */
     protected fun onLazyInit() {
 
+    }
+
+    override fun showLoadingUI(isShow: Boolean) {
+    }
+
+    override fun showEmptyUI(isShow: Boolean) {
+    }
+
+    protected fun showToast(str: String) {
+        showToast(str, Toast.LENGTH_SHORT)
+    }
+
+    protected fun showToast(str: String, duration: Int) {
+        showToast(HashMap<String, Any>().apply {
+            put(CoreConstants.TOAST_KEY_CONTENT_TYPE, CoreConstants.TOAST_CONTENT_TYPE_STR)
+            put(CoreConstants.TOAST_KEY_CONTENT, str)
+            put(CoreConstants.TOAST_KEY_DURATION, duration)
+        })
+    }
+
+    override fun showToast(map: Map<String, *>) {
+        if (map[CoreConstants.TOAST_KEY_CONTENT_TYPE] == CoreConstants.TOAST_CONTENT_TYPE_STR) {
+            Toast.makeText(
+                context,
+                map[CoreConstants.TOAST_KEY_CONTENT] as String,
+                map[CoreConstants.TOAST_KEY_DURATION] as Int
+            ).show()
+        } else if (map[CoreConstants.TOAST_KEY_CONTENT_TYPE] == CoreConstants.TOAST_CONTENT_TYPE_RESID) {
+            Toast.makeText(
+                context,
+                map[CoreConstants.TOAST_KEY_CONTENT] as Int,
+                map[CoreConstants.TOAST_KEY_DURATION] as Int
+            ).show()
+        }
     }
 
 }

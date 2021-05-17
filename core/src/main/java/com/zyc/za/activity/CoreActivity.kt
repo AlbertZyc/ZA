@@ -2,14 +2,17 @@ package com.zyc.za.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
-import com.zyc.za.CoreApplication
+import com.zyc.livebus.observeNonNull
+import com.zyc.za.CoreConstants
 import com.zyc.za.lifecycle.ActivityController
 import com.zyc.za.viewmodel.CoreViewModel
+import com.zyc.za.viewmodel.ViewBehavior
 
 /**
  * @Author AlbertZ
@@ -18,7 +21,8 @@ import com.zyc.za.viewmodel.CoreViewModel
  * TODO 先不考虑没有ViewModel或者ViewDataBinding的情况 默认都有
  */
 
-abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompatActivity() {
+abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompatActivity(),
+    ViewBehavior {
     protected lateinit var viewModel: VM
         private set
     protected lateinit var binding: B
@@ -30,8 +34,15 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
         onInitDataBind()
         onInitViewModel()
         onInitObserver()
+        onInitUIBehavior()
         addViewAction()
         ActivityController.pushActivity(this)
+    }
+
+    private fun onInitUIBehavior() {
+        viewModel.eventToast.observeNonNull(this) {
+            showToast(it)
+        }
     }
 
     /**
@@ -101,6 +112,38 @@ abstract class CoreActivity<B : ViewDataBinding, VM : CoreViewModel> : AppCompat
     }
 
     fun getActivity(): CoreActivity<B, VM> = this
+    override fun showLoadingUI(isShow: Boolean) {
+    }
 
+    override fun showEmptyUI(isShow: Boolean) {
+    }
+
+    protected fun showToast(str: String) {
+        showToast(str, Toast.LENGTH_SHORT)
+    }
+
+    protected fun showToast(str: String, duration: Int) {
+        showToast(HashMap<String, Any>().apply {
+            put(CoreConstants.TOAST_KEY_CONTENT_TYPE, CoreConstants.TOAST_CONTENT_TYPE_STR)
+            put(CoreConstants.TOAST_KEY_CONTENT, str)
+            put(CoreConstants.TOAST_KEY_DURATION, duration)
+        })
+    }
+
+    override fun showToast(map: Map<String, *>) {
+        if (map[CoreConstants.TOAST_KEY_CONTENT_TYPE] == CoreConstants.TOAST_CONTENT_TYPE_STR) {
+            Toast.makeText(
+                this,
+                map[CoreConstants.TOAST_KEY_CONTENT] as String,
+                map[CoreConstants.TOAST_KEY_DURATION] as Int
+            ).show()
+        } else if (map[CoreConstants.TOAST_KEY_CONTENT_TYPE] == CoreConstants.TOAST_CONTENT_TYPE_RESID) {
+            Toast.makeText(
+                this,
+                map[CoreConstants.TOAST_KEY_CONTENT] as Int,
+                map[CoreConstants.TOAST_KEY_DURATION] as Int
+            ).show()
+        }
+    }
 
 }

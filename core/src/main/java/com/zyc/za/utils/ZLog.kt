@@ -2,7 +2,7 @@ package com.zyc.za.utils
 
 import android.util.Log
 import com.zyc.za.BuildConfig
-import com.zyc.za.CoreConstant
+import com.zyc.za.CoreConstants
 
 
 /**
@@ -45,15 +45,15 @@ open class ZLog {
     companion object {
 
         fun i(msg: String) {
-            Log.i(CoreConstant.ZYC, "msg")
+            Log.i(CoreConstants.ZYC, "msg")
         }
 
         fun i(head: String, msg: String) {
-            Log.i("${CoreConstant.ZYC}-$head", msg)
+            Log.i("${CoreConstants.ZYC}-$head", msg)
         }
 
         fun i(any: Any, msg: String) {
-            Log.i("${CoreConstant.ZYC}-${any.javaClass}", msg)
+            Log.i("${CoreConstants.ZYC}-${any.javaClass}", msg)
         }
 //        fun i(msg: String) {
 //            print(CoreConstant.ZYC + msg)
