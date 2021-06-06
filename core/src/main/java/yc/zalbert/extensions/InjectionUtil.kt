@@ -3,7 +3,7 @@ package com.zyc.extensions
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import com.zyc.za.CoreApplication
+import yc.zalbert.za.CoreApplication
 
 /**
  *@Author AlbertZ

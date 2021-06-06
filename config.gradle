@@ -46,7 +46,7 @@ ext {
             "kotlin-stdlib"             : "org.jetbrains.kotlin:kotlin-stdlib:${androidxVersion["ktxVersion"]}",
             "kotlin-coroutines-android" : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${androidxVersion["ktxCoroutines"]}",
             "kotlin-coroutines"         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${androidxVersion["ktxCoroutines"]}",
-//            "kotlinStdlib"             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${androidxVersion[ "ktxCoreVersion"]}",
+            "kotlin-stdlib-jdk"         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${androidxVersion["ktxVersion"]}",
             "appcompat"                 : "androidx.appcompat:appcompat:${androidxVersion["appcompatVersion"]}",
             "constraint-layout"         : "androidx.constraintlayout:constraintlayout:${androidxVersion["constraintlayoutVersion"]}",
             "livedata-ktl"              : "androidx.lifecycle:lifecycle-livedata-ktx:${androidxVersion["livedataVersion"]}",
