@@ -30,7 +30,7 @@ interface ViewBehavior {
     /**
      * 页面跳转
      */
-    fun goto(page: String) {
+    fun  goto(page: String) {
         
     }
 

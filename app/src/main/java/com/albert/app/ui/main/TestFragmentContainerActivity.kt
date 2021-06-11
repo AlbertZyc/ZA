@@ -13,7 +13,8 @@ import yc.zalbert.za.activity.CoreFragmentContainerActivity
 import yc.zalbert.za.fragment.CoreFragment
 
 @Route(path = RouteConstants.TEST_FRAGMENT_CONTAINER)
-class TestFragmentContainerActivity : CoreFragmentContainerActivity<ActivityTestFragmentContainerBinding, TestFragmentContainerViewModel>() {
+class TestFragmentContainerActivity :
+    CoreFragmentContainerActivity<ActivityTestFragmentContainerBinding, TestFragmentContainerViewModel>() {
 
     private var fragments: MutableList<CoreFragment<*, *>> =
         mutableListOf(RechargeFragment(), IdealFragment(), SettingFragment())
@@ -27,18 +28,17 @@ class TestFragmentContainerActivity : CoreFragmentContainerActivity<ActivityTest
                 setOnNavigationItemSelectedListener { item ->
                     when (item.itemId) {
                         R.id.m_recharge -> {
-                            binding.vp.currentItem = 0
+                            vp.currentItem = 0
                         }
                         R.id.m_ideal -> {
-                            binding.vp.currentItem = 1
+                            vp.currentItem = 1
                         }
                         R.id.m_setting -> {
-                            binding.vp.currentItem = 2
+                            vp.currentItem = 2
                         }
                     }
                     true
                 }
-
 
                 setOnNavigationItemReselectedListener {
                     when (it.itemId) {
@@ -54,6 +54,7 @@ class TestFragmentContainerActivity : CoreFragmentContainerActivity<ActivityTest
                         }
                     }
                 }
+
             }
             fragmentAdapter = FragmentAdapter(
                 fragments,
@@ -75,6 +76,9 @@ class TestFragmentContainerActivity : CoreFragmentContainerActivity<ActivityTest
                     }
                 })
             }
+
+            bnvBottom.selectedItemId = R.id.m_ideal
+            vp.currentItem = 1
         }
 
     }

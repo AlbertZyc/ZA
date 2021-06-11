@@ -24,6 +24,7 @@ class TestMainActivity : CoreActivity<TestMainActivityBinding, TestMainViewModel
         super.onInitObserver()
         viewModel.testBLiveData.observe(this, {
             binding.tvCenter.text = it.age.toString()
+            binding.tvCenter.background
         })
     }
 
